@@ -10,6 +10,7 @@ const authorsRouter=require('./routes/authors');
 
 const app=express();
 const MONGODB_URI='mongodb+srv://hari:PAPrAV2t5n0GTwAy@cluster0-uditx.mongodb.net/library?retryWrites=true&w=majority';
+const PORT = process.env.PORT || 5000;
 
 const store= new MongoDBStore({
  uri:MONGODB_URI,
@@ -54,8 +55,8 @@ app.get('/logOut',(req,res)=>{
 // app serving in a perticular port
 mongoose.connect(MONGODB_URI, {useNewUrlParser: true,useUnifiedTopology: true})
 .then(()=>{
-    app.listen(5000,()=>{
-        console.log('app serving at port 5000');
+    app.listen(PORT,()=>{
+        console.log(`app serving at port 5000 ${PORT}`);
     });
 })
 .catch((err)=>{
